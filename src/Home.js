@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BlogLists from './BlogLists';
 
 const Home = (props) => {
   // const { name, age, array, link } = props;
@@ -21,7 +22,6 @@ const Home = (props) => {
 
   return (
     <section className="home">
-      <h1 className="title">Home</h1>
       {/* <p>{nameUI}</p>
       <p>Umur {age}</p>
       <p>Test array {array} </p>
@@ -29,13 +29,7 @@ const Home = (props) => {
       <br />
       <button onClick={handleClick}>Click Me Change Name</button>
       <button onClick={(e) => handleClickAgain('Hidayah', e)}>Click Me Again</button> */}
-      { blogs.map((blog) => (
-          <div className="blog-preview" key={blog.id} >
-            <h2>{ blog.title }</h2>
-            <p>Written by : { blog.author }</p>
-            <p>{ blog.body }</p>
-          </div>   
-      ))}
+      <BlogLists blogs={blogs} title="All post" />
     </section>
   );
 };
