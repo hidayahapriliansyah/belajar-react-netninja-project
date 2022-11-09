@@ -1,5 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './Navbar';
+import Home from './Home';
+import './index.css';
 
 function App() {
   const name = 'Muhamad Adi';
@@ -9,12 +10,10 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
+
       <div className="content">
-        <h1 className="title">App React</h1>
-        <p>{name}</p>
-        <p>Umur {age}</p>
-        <p>Test array {array} </p>
-        <a href={link}>Google Link</a>
+        <Home name={name} age={age} array={array} link={link} />
       </div>
     </div>
   );
