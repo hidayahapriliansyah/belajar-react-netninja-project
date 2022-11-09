@@ -22,15 +22,18 @@ const Home = (props) => {
     { title: "The Dilemma", body: "Lorem ipusum ... ", author: "Adi", id: 5 },
   ]);
 
-  useEffect(() => {
-    console.log('use effect ran');
-    console.log(blogs);
-  })
-
+  
   const handleDelete = (id) => {
     const newBlog = blogs.filter(blog => blog.id !== id);
     setBlogs(newBlog);
-  } 
+  }
+
+  const [name, setName] = useState('Hidayah');
+
+  useEffect(() => {
+    console.log('use effect ran');
+    console.log(name);
+  }, [name]);
 
   return (
     <section className="home">
@@ -42,6 +45,8 @@ const Home = (props) => {
       <button onClick={handleClick}>Click Me Change Name</button>
       <button onClick={(e) => handleClickAgain('Hidayah', e)}>Click Me Again</button> */}
       <BlogLists blogs={blogs} title="All post" handleDelete={handleDelete} />
+      <button onClick={() => setName('Adi')}>Change Name</button>
+      <p>{name}</p>
       {/* <BlogLists blogs={blogs.filter((blog) => blog.author === 'Adi' )} title="Adi's post" handleDelete={handleDelete}/> */}
     </section>
   );
