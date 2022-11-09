@@ -18,6 +18,8 @@ const Home = (props) => {
     { title: "Hello World!", body: "Lorem ipusum ... ", author: "Adi", id: 1 },
     { title: "Let's learn react!", body: "Lorem ipusum ... ", author: "Firmansyah", id: 2 },
     { title: "The Net Ninja", body: "Lorem ipusum ... ", author: "Ninja", id: 3 },
+    { title: "The Rule of Life is Simple", body: "Lorem ipusum ... ", author: "Adi", id: 4 },
+    { title: "The Dilemma", body: "Lorem ipusum ... ", author: "Adi", id: 5 },
   ]);
 
   return (
@@ -30,6 +32,7 @@ const Home = (props) => {
       <button onClick={handleClick}>Click Me Change Name</button>
       <button onClick={(e) => handleClickAgain('Hidayah', e)}>Click Me Again</button> */}
       <BlogLists blogs={blogs} title="All post" />
+      <BlogLists blogs={blogs.filter((blog) => blog.author === 'Adi' )} title="Adi's post" />
     </section>
   );
 };
