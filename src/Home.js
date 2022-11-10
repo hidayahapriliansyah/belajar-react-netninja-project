@@ -14,26 +14,17 @@ const Home = (props) => {
   //     console.log('Hello Again ', name, e.target.innerText);
   //   }
 
-  const [blogs, setBlogs] = useState([
-    { title: "Hello World!", body: "Lorem ipusum ... ", author: "Adi", id: 1 },
-    { title: "Let's learn react!", body: "Lorem ipusum ... ", author: "Firmansyah", id: 2 },
-    { title: "The Net Ninja", body: "Lorem ipusum ... ", author: "Ninja", id: 3 },
-    { title: "The Rule of Life is Simple", body: "Lorem ipusum ... ", author: "Adi", id: 4 },
-    { title: "The Dilemma", body: "Lorem ipusum ... ", author: "Adi", id: 5 },
-  ]);
-
-  
-  const handleDelete = (id) => {
-    const newBlog = blogs.filter(blog => blog.id !== id);
-    setBlogs(newBlog);
-  }
-
-  const [name, setName] = useState('Hidayah');
+  const [blogs, setBlogs] = useState(null);
 
   useEffect(() => {
-    console.log('use effect ran');
-    console.log(name);
-  }, [name]);
+    fetch('http://localhost:8000/blogs')
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        setBlogs(data);
+      });
+  }, []);
 
   return (
     <section className="home">
@@ -44,12 +35,11 @@ const Home = (props) => {
       <br />
       <button onClick={handleClick}>Click Me Change Name</button>
       <button onClick={(e) => handleClickAgain('Hidayah', e)}>Click Me Again</button> */}
-      <BlogLists blogs={blogs} title="All post" handleDelete={handleDelete} />
-      <button onClick={() => setName('Adi')}>Change Name</button>
-      <p>{name}</p>
+      {blogs && <BlogLists blogs={blogs} title="All post" />}
       {/* <BlogLists blogs={blogs.filter((blog) => blog.author === 'Adi' )} title="Adi's post" handleDelete={handleDelete}/> */}
     </section>
   );
 };
 
 export default Home;
+
