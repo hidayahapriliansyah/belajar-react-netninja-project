@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import Home from './Home';
 import './index.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   const name = 'Muhamad Adi';
@@ -9,13 +10,18 @@ function App() {
   const link = 'http://www.google.com/';
 
   return (
-    <div className="App">
-      <Navbar />
-
-      <div className="content">
-        <Home name={name} age={age} array={array} link={link} />
-      </div>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+            <Switch>
+              <Route path="/">
+                <Home name={name} age={age} array={array} link={link} />
+              </Route>
+            </Switch>
+        </div>
+       </div>
+    </Router>
   );
 }
 
