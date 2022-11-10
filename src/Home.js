@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useFetch from "./useFetch";
 import BlogLists from './BlogLists';
 
 const Home = (props) => {
@@ -13,31 +14,7 @@ const Home = (props) => {
   //   const handleClickAgain = (name, e) => {
   //     console.log('Hello Again ', name, e.target.innerText);
   //   }
-  const [error, setError] = useState(null);
-  const [isPending, setIsPending] = useState(true);
-  const [blogs, setBlogs] = useState(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      fetch('http://localhost:8000/blogss')
-        .then(response => {
-          if(!response.ok) {
-            throw Error('Connected to resource but response not ok!');
-          }
-          return response.json();
-        })
-        .then(data => {
-          setBlogs(data);
-          setIsPending(false);
-          setError(null);
-        })
-        .catch(err => {
-          setIsPending(false);
-          setError(err.message);
-          // setBlogs(null);
-        });
-    }, 1000);
-  }, []);
+  const {error, isPending, data: blogs} = useFetch('http://localhost:8000/blogs');
 
   return (
     <section className="home">
