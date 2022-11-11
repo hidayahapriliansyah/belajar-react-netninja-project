@@ -2,6 +2,8 @@ import Navbar from './Navbar';
 import Home from './Home';
 import './index.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Create from './Create';
+import Templates from './Templates';
 
 function App() {
   const name = 'Muhamad Adi';
@@ -15,8 +17,14 @@ function App() {
         <Navbar />
         <div className="content">
             <Switch>
-              <Route path="/">
+              <Route exact path="/">
                 <Home name={name} age={age} array={array} link={link} />
+              </Route>
+              <Route path="/create">
+                <Create />
+              </Route>
+              <Route>
+                <Templates/>
               </Route>
             </Switch>
         </div>

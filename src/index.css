@@ -55,3 +55,12 @@
   color: #f1356d;
   margin-bottom: 8px;
 }
+
+.template-class {
+  text-decoration: none;
+  background-color: #f1356d;
+  color: #f2f2f2;
+  padding: 5px;
+  font-weight: 500;
+  border-radius: 0.5em;
+}
