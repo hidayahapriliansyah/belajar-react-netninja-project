@@ -4,6 +4,7 @@ import './index.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './Create';
 import Templates from './Templates';
+import BlogDetail from './BlogDetail';
 
 function App() {
   const name = 'Muhamad Adi';
@@ -22,6 +23,9 @@ function App() {
               </Route>
               <Route path="/create">
                 <Create />
+              </Route>
+              <Route path="/blog-detail/:id">
+                <BlogDetail />
               </Route>
               <Route>
                 <Templates/>
