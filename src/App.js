@@ -3,8 +3,8 @@ import Home from './Home';
 import './index.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './Create';
-import Templates from './Templates';
 import BlogDetail from './BlogDetail';
+import NotFound from './NotFound';
 
 function App() {
   const name = 'Muhamad Adi';
@@ -27,8 +27,8 @@ function App() {
               <Route path="/blog-detail/:id">
                 <BlogDetail />
               </Route>
-              <Route>
-                <Templates/>
+              <Route path="*">
+                <NotFound/>
               </Route>
             </Switch>
         </div>
